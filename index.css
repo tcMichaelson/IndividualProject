@@ -1,0 +1,120 @@
+@font-face {
+	font-family: 'Dense-Regular';
+	src: url(Dense-Regular.otf);
+}
+
+@font-face{
+	font-family: 'nevis';
+	src: url(nevis.ttf);
+}
+
+html {
+	width: 100%;
+	background-color: #47697E;
+
+}
+
+header h1 {
+	color: #FFCC33;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 150px;
+	width: 100%;
+	font-family: 'Dense-Regular';
+	font-size: 50pt;
+	letter-spacing: 15px;
+}
+
+section {
+	margin-left: 200px;
+}
+
+nav {
+	height: 100%;
+	position: absolute;
+}
+
+a{
+	color: rgb(50,50,50);
+	display: block;
+	padding-left: 20px;
+	padding-bottom: 3px;
+	text-decoration: none;
+	width: 100%;
+}
+
+nav ul {
+	list-style: none;
+}
+
+nav ul a:hover {
+	color: #FFCC33;
+	background-color: rgb(50,50,50);
+	height: 150px;
+}
+
+div {
+/*	border: 1px solid red;*/
+}
+
+.boxthread {
+	border-left: 1px solid rgb(50,50,50);
+	border-top: 1px solid rgb(50,50,50);
+	width: 700px;
+	height: 500px;
+	margin: 5px 5px;
+	float: left;
+	background-color: #68889A;
+	color: #FCF1D1;
+
+}
+
+.subscribeToggle, .closebox {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+
+.subscribeToggle {
+	text-align: center;
+	right: 30px;
+}
+
+.subscribeToggle img {
+	height: 100%;
+}
+
+.closebox{
+	right: 0px;
+}
+
+.messagetext{
+	float: left;
+	padding: 5px;
+	top: 30px;
+	position: absolute;
+}
+
+.messagetitle {
+	font-size: 16pt;
+	position: absolute;
+	height: 30px;
+	float: left;
+}
+
+p, div, ul {
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	font-family: 'Montserrat';
+	font-size: 12pt;
+	font-weight: normal;
+}
+
+@media screen and (max-width: 1550px) {
+
+	.messagetitle {}
+		width: 645px;
+	}
+}
