@@ -10,6 +10,7 @@ namespace famiLYNX.Models {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Address UserAddress { get; set; }
+        public List<Family> Families { get; set; }
         public List<Role> MemberRoles { get; set; }
     }
 }

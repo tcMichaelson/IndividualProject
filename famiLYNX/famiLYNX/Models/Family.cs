@@ -6,6 +6,7 @@ using System.Web;
 namespace famiLYNX.Models {
     public class Family {
         public string OrgName { get; set; }
+        public FamilyType Type { get; set; } //family, troop, roommates, church, business, friends
         public List<Member> MemberList { get; set; }
         public List<Conversation> ConversationList { get; set; }
     }

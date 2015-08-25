@@ -1,0 +1,36 @@
+﻿@model famiLYNX.Models.Conversation
+
+@{
+    ViewBag.Title = "Conversation";
+}
+<!-- This view will be used if the user wants to expand the conversation
+    to the full window, and not just on the main family page.
+    Alternatively, this could act as a subview to the family view.-->
+
+<div>
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpirationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpirationDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

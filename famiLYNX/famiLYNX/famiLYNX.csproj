@@ -173,13 +173,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Messages\Message.cshtml" />
+    <Content Include="Views\Conversations\Conversation.cshtml" />
+    <Content Include="Views\Familys\Index.cshtml" />
+    <Content Include="Views\Members\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Conversations\" />
-    <Folder Include="Views\Familys\" />
-    <Folder Include="Views\Members\" />
-    <Folder Include="Views\Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
