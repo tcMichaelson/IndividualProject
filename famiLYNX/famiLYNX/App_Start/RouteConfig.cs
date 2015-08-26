@@ -11,9 +11,21 @@ namespace famiLYNX {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Family View",
+                url: "Members/Families",
+                defaults: new { controller="Familys", Action="Index"}
+                );
+
+            routes.MapRoute(
+                name: "Member View",
+                url: "Members",
+                defaults: new { controller = "Members", Action = "Index"}
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

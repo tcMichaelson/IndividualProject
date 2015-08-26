@@ -1,8 +1,5 @@
 ﻿@model famiLYNX.Models.Family
 
-@{
-    ViewBag.Title = "Index";
-}
 
 <!--This view will display the family name as well as all the conversations
     applicable to that user in a grid format.  There will also be navigation
@@ -10,12 +7,27 @@
     things related to that family.  The user profile could be accessible
     here as well, but that might be needed on a level higher up.-->
 
-<div>
-    <p>
-        @Html.DisplayFor(model => model.OrgName)
-    </p>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+        @{
+            var side = "";
+            for (var i = 0; i < Model.ConversationList.Count; i++) {
+                if (i % 2 == 0) { side = "left"; } else { side = "right"; }
+                <div class="boxthread @side">
+                    <div class="messagetitle">
+                        @Model.ConversationList[i].Topic
+                    </div>
+                    @{
+                        foreach (var msg in Model.ConversationList[i].MessageList) {
+                            <div class="messagetext">
+                                @msg.Text
+                            </div>
+                            <div class="closebox"></div>
+                            <div class="subscribeToggle"><img src="..\Content\checkmark.png" alt="going" onclick="" /></div>
+                        }
+                    }
+
+                </div>
+                        }
+
+        }

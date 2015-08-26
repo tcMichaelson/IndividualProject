@@ -11,6 +11,7 @@ namespace famiLYNX.Models {
         public Member CreatedBy { get; set; }
         public DateTime ExpirationDate { get; set; }
         public bool IsEvent { get; set; }
+      //public bool Recurs { get; set; }  Maybe set up an option to have an event recur to remind the organizer.
         public List<Message> MessageList { get; set; }
         public List<Member> ContributorList { get; set; }
         public List<Member> VisibleTo { get; set; }

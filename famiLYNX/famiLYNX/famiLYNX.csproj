@@ -123,6 +123,7 @@
     <Compile Include="Controllers\ConversationsController.cs" />
     <Compile Include="Controllers\FamilysController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -131,6 +132,7 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Family.cs" />
     <Compile Include="Models\FamilyType.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Conversation.cs" />
@@ -141,12 +143,18 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\checkmark.png" />
+    <Content Include="Content\ex.png" />
+    <Content Include="Content\FamilyIndexStyles.css" />
+    <Content Include="Content\maybe.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\Dense-Regular.otf" />
+    <Content Include="fonts\nevis.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -172,11 +180,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Messages\Message.cshtml" />
     <Content Include="Views\Conversations\Conversation.cshtml" />
     <Content Include="Views\Familys\Index.cshtml" />
     <Content Include="Views\Members\Profile.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

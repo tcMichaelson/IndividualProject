@@ -1,0 +1,21 @@
+﻿@model famiLYNX.Models.LoginViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Login</h2>
+
+@using(Html.BeginForm()){
+    <div>
+        @Html.LabelFor(m => m.UserName, "Enter User Name")
+        @Html.TextBoxFor(m => m.UserName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Password, "Enter Password")
+        @Html.PasswordFor(m => m.Password)
+    </div>
+    <div>
+        &nbsp;
+        <input type="submit" value="Log In" />
+    </div>
+}
