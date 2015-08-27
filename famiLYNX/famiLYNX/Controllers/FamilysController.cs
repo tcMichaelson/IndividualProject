@@ -14,5 +14,10 @@ namespace famiLYNX.Controllers
         public ActionResult Index() {
             return View(_repo.GetFamily());
         }
+
+        public ActionResult MyFamily(string userID,string famName) {
+            return View(_repo.GetFamily());
+        }
     }
+
 }

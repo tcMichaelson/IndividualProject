@@ -4,25 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/FamilyIndexStyles.css")    
+    @Styles.Render("~/Content/FamilyIndexStyles.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
 <body>
     <header>
-        <div class="col-md-push-1">
-            <h1>Michaelson</h1>
-        </div>
+        <h1>famiLYNX</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#">Create New Thread</a></li>
-            <li><a href="#">Search</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Log Off</a></li>
-        </ul>
-    </nav>
+
     <section id="main">
         @RenderBody()
     </section>

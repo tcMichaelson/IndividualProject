@@ -7,5 +7,6 @@ namespace famiLYNX.Models {
     public class Message {
         public string Text { get; set; }
         public Member Contributor { get; set; }
+        public DateTime TimeSubmitted { get; set; }
     }
 }

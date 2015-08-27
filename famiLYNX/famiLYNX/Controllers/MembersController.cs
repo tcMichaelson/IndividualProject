@@ -1,4 +1,5 @@
-﻿using System;
+﻿using famiLYNX.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,14 @@ namespace famiLYNX.Controllers
 {
     public class MembersController : Controller
     {
+        Repository _repo = new Repository();
+
         // GET: Members
-        public ActionResult Index()
+        public ActionResult MyProfile(string userID)
         {
-            return View();
+            var myView = _repo.GetMember(userID);
+
+            return View(_repo.GetMember(userID));
         }
 
         // GET: Members/Details/5

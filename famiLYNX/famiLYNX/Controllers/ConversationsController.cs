@@ -1,4 +1,5 @@
-﻿using System;
+﻿using famiLYNX.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,16 @@ namespace famiLYNX.Controllers
 {
     public class ConversationsController : Controller
     {
+        Repository _repo = new Repository();
         // GET: Conversations
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult DisplayMessages(Conversation convo) {
+            var someMsg = convo.MessageList[0].Text;
+            return PartialView("_Conversation", convo);
         }
 
         // GET: Conversations/Details/5

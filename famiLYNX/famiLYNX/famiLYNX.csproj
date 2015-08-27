@@ -181,14 +181,18 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
-    <Content Include="Views\Messages\Message.cshtml" />
-    <Content Include="Views\Conversations\Conversation.cshtml" />
+    <Content Include="Views\Shared\_Message.cshtml" />
+    <Content Include="Views\Shared\_Conversation.cshtml" />
     <Content Include="Views\Familys\Index.cshtml" />
-    <Content Include="Views\Members\Profile.cshtml" />
+    <Content Include="Views\Members\MyProfile.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Shared\_PartialPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Conversations\" />
+    <Folder Include="Views\Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

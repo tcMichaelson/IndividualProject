@@ -1,0 +1,20 @@
+﻿@model famiLYNX.Models.Conversation
+
+<!-- This view will be used if the user wants to expand the conversation
+    to the full window, and not just on the main family page.
+    Alternatively, this could act as a subview to the family view.-->
+
+@{ 
+
+    <div class="messagetitle">
+        @Model.Topic
+    </div>
+    <div class="closebox"></div>
+    <div class="subscribeToggle"><img src="..\Content\checkmark.png" alt="going" onclick="" /></div>
+
+    foreach (var msg in Model.MessageList) {        
+            <p class="messagetext">
+                @msg.Text <sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@msg.Contributor.FirstName</sub>
+            </p>
+        }
+}

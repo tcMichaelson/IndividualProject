@@ -1,21 +1,23 @@
 ﻿@model famiLYNX.Models.LoginViewModel
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<h2>Login</h2>
+@using (Html.BeginForm()) {
+    <div style="background-color: #68889A; color: #FCF1D1; padding-bottom: 20px; min-width: 500px;" , class="col-md-4">
 
-@using(Html.BeginForm()){
-    <div>
-        @Html.LabelFor(m => m.UserName, "Enter User Name")
-        @Html.TextBoxFor(m => m.UserName)
+        <h2>Please Enter Login Information</h2>
+        <br />
+        <div>
+            @Html.LabelFor(m => m.UserName, "User Name")
+            @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "form-control" })
+            <div>&nbsp;</div>
+            @Html.LabelFor(m => m.Password, "Password")
+            @Html.PasswordFor(m => m.Password, htmlAttributes: new { @class = "form-control" })
+            <div>&nbsp;</div>
+            <input type="submit" value="Log In" class="btn" />
+        </div>
     </div>
-    <div>
-        @Html.LabelFor(m => m.Password, "Enter Password")
-        @Html.PasswordFor(m => m.Password)
-    </div>
-    <div>
-        &nbsp;
-        <input type="submit" value="Log In" />
-    </div>
+
 }

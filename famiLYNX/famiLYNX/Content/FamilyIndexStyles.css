@@ -8,8 +8,8 @@
     src: url('../fonts/nevis.ttf') format('truetype');
 }
 
-html {
-	width: 100%;
+html body {
+
 	background-color: #47697E;
 
 }
@@ -18,15 +18,13 @@ header h1 {
 	color: #FFCC33;
 	padding: 0px;
 	margin: 0px;
-	margin-left: 150px;
-	width: 100%;
 	font-family: 'Dense-Regular';
 	font-size: 50pt;
 	letter-spacing: 15px;
 }
 
 section {
-	margin-left: 200px;
+	/*margin-left: 200px;*/
 }
 
 nav {
@@ -50,23 +48,10 @@ nav ul {
 nav ul a:hover {
 	color: #FFCC33;
 	background-color: rgb(50,50,50);
-	height: 150px;
 }
 
 div {
 /*	border: 1px solid red;*/
-}
-
-.boxthread {
-	border-left: 1px solid rgb(50,50,50);
-	border-top: 1px solid rgb(50,50,50);
-	width: 700px;
-	height: 500px;
-	margin: 5px 5px;
-	float: left;
-	background-color: #68889A;
-	color: #FCF1D1;
-
 }
 
 .subscribeToggle, .closebox {
@@ -88,11 +73,41 @@ div {
 	right: 0px;
 }
 
-.messagetext{
+.boxthread {
+	border-left: 1px solid rgb(50,50,50);
+	border-top: 1px solid rgb(50,50,50);
+	width: 700px;
+	height: 500px;
+	margin: 5px 5px;
 	float: left;
-	padding: 5px;
+	background-color: #68889A;
+	color: #FCF1D1;
+    position: relative;
+}
+
+.messagetext{
+    background-color: #47697E;
+    border: 1px black solid;
+    border-radius: 5px;
+	float: left;
+    clear:left;
+    margin: 5px 10px;
+    overflow: auto;
+    max-width: 90%;
+	padding: 2px 10px;
 	top: 30px;
-	position: absolute;
+	position: relative;
+}
+
+@media screen and (max-width: 990px){
+    nav a {
+        display:none;
+    }
+
+    .boxthread{
+        width:100%;
+        margin: 0px;
+    }
 }
 
 .messagetitle {
