@@ -1,83 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace famiLYNX.Models {
-    //This will eventually populate any lists or fields that need
-    //to be set.
+
     public class Repository {
-        public Member GetMember() {
-            return new Member {
-                FirstName = "Tom",
-                LastName = "Michaelson",
-                UserAddress = GetAddress(),
-                UserName = "tmichael"
+        private DataContext _db = new DataContext();
+
+        public void CreateMessage(string msgText, string contributorUserName, int conversationId) {
+            Message newMessage = new Message();
+            newMessage.Contributor = GetMemberByUserName(contributorUserName);
+            newMessage.Conversation = GetConversationById(conversationId);
+            newMessage.Text = msgText;
+            newMessage.TimeSubmitted = DateTime.Now;
+            _db.Messages.Add(newMessage);
+            _db.SaveChanges();
+        }
+
+        public void CreateConversation(string topic, string userName, int famId, bool isEvent, bool recurs, DateTime expDate) {
+            Conversation newConvo = new Conversation {
+                Topic = topic,
+                CreatedBy = GetMemberByUserName(userName),
+                WhichFam = GetFamilyById(famId),
+                IsEvent = isEvent,
+                Recurs = recurs,
+                ExpirationDate = expDate,
+                CreatedDate = DateTime.Now,
+                MessageList = new List<Message>(),
+                VisibleTo = GetFamilyById(famId).MemberList,
+                AttenderList = new List<Member> { GetMemberByUserName(userName) }
             };
         }
 
-        public Member GetMember(string uName) {
-            foreach (var user in new List<Member> { GetMember() }) {
-                if (user.UserName == uName) {
-                    return user;
+        public FamilyViewModel GetConversations(string userID, string famName) {
+            Member member = GetMemberByUserName(userID);
+            List<Family> families = GetFamilysByName(famName);
+            foreach (var fam in families) {
+                if (fam.MemberList.Contains(member)) {
+                    var convoList = (from m in _db.Conversations where m.WhichFam.Id == fam.Id select m).Include("MessageList").ToList();
+                    return new FamilyViewModel { ConversationList = convoList, FamilyId = fam.Id, FamilyName = fam.OrgName, UserName = userID };
                 }
             }
-            return new Member { };
+            return new FamilyViewModel();
         }
 
-        public Address GetAddress() {
-            return new Address { City = "Plano", State = StName.Illinois, Street = "1507 Prairie Wind Dr." };
-        }
-
-        public List<Conversation> GetConversation() {
-            var memberToUse = GetMember();
-            return new List<Conversation> {
-                new Conversation {
-                MessageList = GetMessage(),
-                Topic = "Some Topic",
-                AttenderList = new List<Member> { memberToUse },
-                ContributorList = new List<Member> { memberToUse },
-                CreatedBy = memberToUse,
-                CreatedDate = DateTime.Now,
-                ExpirationDate = DateTime.Now,
-                Id = 123,
-                IsEvent = true,
-                VisibleTo = new List<Member> { memberToUse }
-            },
-            new Conversation {
-                MessageList = GetMessage(),
-                Topic = "Some Second Topic",
-                AttenderList = new List<Member> { memberToUse },
-                ContributorList = new List<Member> { memberToUse },
-                CreatedBy = memberToUse,
-                CreatedDate = DateTime.Now,
-                ExpirationDate = DateTime.Now,
-                Id = 124,
-                IsEvent = true,
-                VisibleTo = new List<Member> { memberToUse }
+        public bool IsMemberInFamily(Member member, Family family) {
+            if (member != null && family != null) {
+                return member.Families.Contains(family);
             }
-            };
+            return false;
         }
 
-        public Family GetFamily() {
-            return new Family {
-                ConversationList = GetConversation(),
-                MemberList = new List<Member> { GetMember() },
-                OrgName = "Michaelson"
-            };
+        public List<Family> GetFamilysByName(string famName) {
+            return (from f in _db.Familys where f.OrgName.ToLower() == famName.ToLower() select f).Include("MemberList").ToList();
         }
 
-        public IList<Message> GetMessage() {
-            return new List<Message> {
-                new Message {
-                    Contributor = GetMember(),
-                    Text = "This is some text, but I don't know why."
-                },
-                new Message {
-                    Contributor = GetMember(),
-                    Text = "This is a second set of text."
-                }
-            };
+        public int GetFamilyIdById(int id) {
+            return (from f in _db.Familys where f.Id == id select f.Id).FirstOrDefault();
         }
+
+        public string GetFamilyNameById(int id) {
+            return (from f in _db.Familys where f.Id == id select f.OrgName).FirstOrDefault();
+        }
+
+        public Family GetFamilyById(int id) {
+            return (from f in _db.Familys where f.Id == id select f).Include("MemberList").FirstOrDefault();
+        }
+
+        public ConversationViewModel GetConversationData(int conversationId, int familyId, string familyName, string userName) {
+            ConversationViewModel vm = new ConversationViewModel {
+                Conversation = GetConversationById(conversationId),
+                FamilyId = familyId,
+                FamilyName = familyName,
+                UserName = userName
+            };
+            return (vm);
+        }
+
+        public Conversation GetConversationById (int id) {
+            return (from c in _db.Conversations where c.Id == id select c).Include("MessageList.Contributor").FirstOrDefault();
+        }
+
+        public Member GetMemberByUserName (string userId) {
+            return (from m in _db.Members where m.UserName == userId select m).Include("Families").FirstOrDefault();
+        }
+
+        public List<Member> GetMembersByFamilyId(int Id) {
+            var fam = (from f in _db.Familys where f.Id == Id select f).FirstOrDefault();
+            return (from m in _db.Members where m.Families.ToList().Contains(fam) select m).ToList();
+        }
+
     }
 }

@@ -6,33 +6,35 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace famiLYNX {
-    public class RouteConfig {
+    public class RouteConfig { 
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Add Message",
+                url: "Messages/Create",
+                defaults: new {controller = "Messages", Action="Create"}
+
+                );
+
+            routes.MapRoute(
+                name: "Show New Message",
+                url: "Familys/ShowNewMessage",
+                defaults: new { controller = "Familys", Action = "ShowNewMessage" }
+                );
+
+            routes.MapRoute(
                  name: "Member Profile",
                  url: "{userID}",
-                 defaults: new { controller = "Members", Action = "MyProfile" }
+                 defaults: new { controller = "Login", Action = "Index" }
                  );
+
 
             routes.MapRoute(
                 name: "Family Page",
                 url: "{userID}/{famName}",
-                defaults: new {controller = "Familys", Action="MyFamily"}
+                defaults: new {controller = "Familys", Action="Index"}
             );
-
-            routes.MapRoute(
-                name: "Family View",
-                url: "Members/Families",
-                defaults: new { controller="Familys", Action="Index"}
-                );
-
-            routes.MapRoute(
-                name: "Member View",
-                url: "Members",
-                defaults: new { controller = "Members", Action = "Index"}
-                );
 
             routes.MapRoute(
                 name: "Default",

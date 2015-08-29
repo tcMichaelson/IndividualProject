@@ -1,4 +1,5 @@
-﻿using System;
+﻿using famiLYNX.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,15 @@ namespace famiLYNX.Controllers
 {
     public class MessagesController : Controller
     {
+
+        Repository _repo = new Repository();
+
         // GET: Messages
         public ActionResult Index()
         {
             return View();
         }
+
 
         // GET: Messages/Details/5
         public ActionResult Details(int id)
@@ -28,18 +33,18 @@ namespace famiLYNX.Controllers
 
         // POST: Messages/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CreateMessageViewModel model)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+            try {
+                if (ModelState.IsValid) {
+                    if (model.MessageText != "" && model.MessageText != null) {
+                        _repo.CreateMessage(model.MessageText, model.MemberUserName, model.ConversationId);
+                    }
+                }
             }
-            catch
-            {
-                return View();
+            catch {
             }
+            return RedirectToAction("Index", "Familys", new { userID = model.MemberUserName, famName = _repo.GetFamilyNameById(model.FamilyId) });
         }
 
         // GET: Messages/Edit/5

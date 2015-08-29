@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -129,9 +137,31 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508280030404_initial.cs" />
+    <Compile Include="Migrations\201508280030404_initial.Designer.cs">
+      <DependentUpon>201508280030404_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508280306564_ExpirationIsNullable.cs" />
+    <Compile Include="Migrations\201508280306564_ExpirationIsNullable.Designer.cs">
+      <DependentUpon>201508280306564_ExpirationIsNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508280333257_ConversationAddFamily.cs" />
+    <Compile Include="Migrations\201508280333257_ConversationAddFamily.Designer.cs">
+      <DependentUpon>201508280333257_ConversationAddFamily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508292027359_FamilyViewWorks.cs" />
+    <Compile Include="Migrations\201508292027359_FamilyViewWorks.Designer.cs">
+      <DependentUpon>201508292027359_FamilyViewWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ConversationViewModel.cs" />
+    <Compile Include="Models\CreateMessageViewModel.cs" />
+    <Compile Include="Models\DatabaseInitializer.cs" />
+    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Family.cs" />
     <Compile Include="Models\FamilyType.cs" />
+    <Compile Include="Models\FamilyViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Message.cs" />
@@ -141,6 +171,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\famiLYNX.Models.DataContext.mdf" />
+    <Content Include="App_Data\famiLYNX.Models.DataContext_log.ldf">
+      <DependentUpon>famiLYNX.Models.DataContext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\checkmark.png" />
@@ -187,10 +221,9 @@
     <Content Include="Views\Members\MyProfile.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
-    <Content Include="Views\Shared\_PartialPage1.cshtml" />
+    <Content Include="Views\Shared\_NavView.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Conversations\" />
     <Folder Include="Views\Messages\" />
   </ItemGroup>
@@ -201,6 +234,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508280030404_initial.resx">
+      <DependentUpon>201508280030404_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508280306564_ExpirationIsNullable.resx">
+      <DependentUpon>201508280306564_ExpirationIsNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508280333257_ConversationAddFamily.resx">
+      <DependentUpon>201508280333257_ConversationAddFamily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508292027359_FamilyViewWorks.resx">
+      <DependentUpon>201508292027359_FamilyViewWorks.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

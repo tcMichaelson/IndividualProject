@@ -11,13 +11,21 @@ namespace famiLYNX.Controllers
         // GET: Familys
         private Repository _repo = new Repository();
 
-        public ActionResult Index() {
-            return View(_repo.GetFamily());
+
+        public ActionResult Index(string userID, string famName) {
+            FamilyViewModel vm = _repo.GetConversations(userID, famName);
+            if (vm.ConversationList != null) {
+                return View(vm);
+            } else {
+                return RedirectToAction("Index", "Login");
+            }
+
         }
 
-        public ActionResult MyFamily(string userID,string famName) {
-            return View(_repo.GetFamily());
+        public ActionResult IndexNewConversation(string userID, string famName) {
+            return View();
         }
+
     }
 
 }

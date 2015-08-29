@@ -11,14 +11,19 @@ namespace famiLYNX.Controllers
     {
         Repository _repo = new Repository();
         // GET: Conversations
+
+        public void StartNewConversation() {
+            //This will need a separate view.  It will need a view for topic, event information, expiration dates,
+            //recurrence info (which will also need customizable fields).
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult DisplayMessages(Conversation convo) {
-            var someMsg = convo.MessageList[0].Text;
-            return PartialView("_Conversation", convo);
+        public ActionResult DisplayConversation(int conversationId, int familyId, string familyName, string userName) {
+            return PartialView("_Conversation", _repo.GetConversationData(conversationId, familyId, familyName, userName));
         }
 
         // GET: Conversations/Details/5

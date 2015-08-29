@@ -7,6 +7,7 @@ using System.Web;
 //it's really needed for functionality's sake.
 namespace famiLYNX.Models {
     public class FamilyType {
+        public int Id { get; set; }
         public string OrgType { get; set; }
     }
 }

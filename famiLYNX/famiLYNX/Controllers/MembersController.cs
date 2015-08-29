@@ -14,81 +14,9 @@ namespace famiLYNX.Controllers
         // GET: Members
         public ActionResult MyProfile(string userID)
         {
-            var myView = _repo.GetMember(userID);
+            //var myView = _repo.GetMember(userID);
 
-            return View(_repo.GetMember(userID));
-        }
-
-        // GET: Members/Details/5
-        public ActionResult Details(int id)
-        {
             return View();
-        }
-
-        // GET: Members/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Members/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Members/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Members/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Members/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Members/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

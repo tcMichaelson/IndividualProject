@@ -1,29 +1,19 @@
-﻿@model famiLYNX.Models.Family
+﻿@model famiLYNX.Models.FamilyViewModel
 
+<header>
+    <h1>@Model.FamilyName</h1>
+</header>
 
-<!--This view will display the family name as well as all the conversations
-    applicable to that user in a grid format.  There will also be navigation
-    links on the left side in order to create new conversations or other
-    things related to that family.  The user profile could be accessible
-    here as well, but that might be needed on a level higher up.-->
-
-
-
-@{
-    string side = "";
-    string push = "";
-    for (var i = 0; i < Model.ConversationList.Count; i++) {
-
-        if (i % 2 == 0) { side = "left"; push = "2"; } else { side = "right"; push = "2"; }
-        if (side == "left") {
-            <text><div class="col-md-12"></text>
-        }
-        <div class="boxthread @side  col-md-push-@push">
-            @Html.Action("DisplayMessages", "Conversations", new { convo = Model.ConversationList[i] })
-        </div>
-            if (side == "right") {
-                new TagBuilder("div").ToString(TagRenderMode.EndTag);
-
-            }
+<section id="main">
+    @{
+        for (var i = 0; i < Model.ConversationList.Count(); i++) {
+            string side = "";
+            string boxHeight = "";
+            boxHeight = ((Model.ConversationList[i].MessageList.Count() * 35) + 60).ToString();
+            if (i % 2 == 0) { side = "left"; } else { side = "right"; }
+            <div class="boxthread @side" style="height: @(boxHeight)px;">
+                @Html.Action("DisplayConversation", "Conversations", new { conversationId = Model.ConversationList[i].Id, familyId = Model.FamilyId, familyName = Model.FamilyName, userName = Model.UserName })
+            </div>
         }
     }
+</section>

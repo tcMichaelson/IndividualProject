@@ -10,22 +10,16 @@
 </head>
 
 <body>
-    <header>
-        <div class="col-md-push-1">
-            <h1>Michaelson</h1>
-        </div>
-    </header>
+    
+    @RenderBody()
     <nav>
         <ul>
-            <li><a href="#">Create New Thread</a></li>
+            <li><a href="/Conversation/ShowNewMessage/">Conversation Starter</a></li>
             <li><a href="#">Search</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Log Off</a></li>
         </ul>
     </nav>
-    <section id="main">
-        @RenderBody()
-    </section>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
