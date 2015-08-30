@@ -23,6 +23,22 @@ header h1 {
 	letter-spacing: 15px;
 }
 
+li, a, input, form label {
+    font-family: 'Montserrat';
+    font-size: 9pt;
+    font-weight: normal;
+}
+
+p, div, ul {
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	font-family: 'Montserrat';
+	font-size: 9pt;
+	font-weight: normal;
+}
+
 section#main {
 	margin-left: 150px;
 }
@@ -36,9 +52,8 @@ nav {
 a{
 	color: rgb(50,50,50);
 	display: block;
-    line-height: 2em;
+    line-height: 30px;
 	padding-left: 20px;
-	padding-bottom: 3px;
 	width: 100%;
 }
 
@@ -51,6 +66,57 @@ nav ul a:hover {
 	color: #FFCC33;
 	background-color: rgb(50,50,50);
     text-decoration: none;
+}
+
+.NewMessageLink{
+    color: rgb(50,50,50);
+	display: block;
+    line-height: 30px;
+	padding-left: 20px;
+	padding-bottom: 3px;
+	width: 100%;
+}
+
+.NewMessageLink > p {
+    margin:0px;
+    padding: 0px;
+}
+
+.NewMessageForm {
+    color: #FFCC33;
+    font-family: 'Montserrat';
+	font-size: 9pt;
+    position: absolute;
+    top: 30px;
+    display: none;
+}
+
+.NewMessageLink:hover > .NewMessageForm {
+    display: block;
+    line-height: normal;
+}
+
+label {
+    margin-top: 5px;
+}
+
+input[type="checkbox"] {
+    float: right;
+}
+
+input[type="text"]{
+    margin-bottom: 15px;
+}
+
+.eventCheckbox:checked > label {
+    display: block;
+}
+    
+.NewMessageLink:hover {
+	color: #FFCC33;
+	background-color: rgb(50,50,50);
+    height: 320px;
+    width: 180px;
 }
 
 div {
@@ -102,7 +168,7 @@ div {
 	position: relative;
 }
 
-input[type="submit"]{
+.boxthread input[type="submit"]{
     float: right;
     right: 0px;
     width: 10%;
@@ -145,16 +211,6 @@ input[type="submit"]{
 	height: 30px;
 	float: left;
     left: 12px;
-}
-
-p, div, ul {
-	position: relative;
-	margin: 0px;
-	padding: 0px;
-	display: block;
-	font-family: 'Montserrat';
-	font-size: 9pt;
-	font-weight: normal;
 }
 
 @media screen and (max-width: 1550px) {

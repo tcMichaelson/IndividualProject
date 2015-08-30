@@ -26,7 +26,7 @@ namespace famiLYNX.Controllers
         }
 
         // GET: Messages/Create
-        public ActionResult Create()
+        public ActionResult Create(FamilyViewModel model)
         {
             return View();
         }

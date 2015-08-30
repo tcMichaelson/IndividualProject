@@ -17,3 +17,25 @@
         }
     }
 </section>
+<nav>
+    <ul>
+        <li class="NewMessageLink">
+            <p>Conversation Starter</p>
+                    @using (@Html.BeginForm("Create", "Message",FormMethod.Post, htmlAttributes: new { @class="NewMessageForm" })) {
+                        @Html.Label("What are we going to talk about?")
+                        @Html.TextBox("NewTopic", "", htmlAttributes: new { placeholder = "This is where the topic goes" })
+                        <label>
+                            Check here if this conversation is for an event: @Html.CheckBox("IsEvent", false, htmlAttributes: new { @class = "eventCheckbox" })
+                            <label>Enter the date of this event.</label>
+                            @Html.TextBox("ExpirationDate", "", htmlAttributes: new { placeholder = DateTime.Today.AddDays(14) })
+                        </label>
+                        @Html.Label("Enter the initial message for this event")
+                        @Html.TextBox("FirstMessage", "", htmlAttributes: new { placeholder = "Initial message goes here" })
+                        <input type="submit", value="Start this conversation" />
+                    }
+        </li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Log Off</a></li>
+    </ul>
+</nav>

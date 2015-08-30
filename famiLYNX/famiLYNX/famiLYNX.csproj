@@ -166,6 +166,7 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Conversation.cs" />
+    <Compile Include="Models\NewConversationViewModel.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,6 +190,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\Dense-Regular.otf" />
     <Content Include="fonts\nevis.ttf" />
+    <Content Include="Helpers\Date.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
