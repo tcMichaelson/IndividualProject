@@ -40,18 +40,19 @@ namespace famiLYNX.Controllers
 
         // POST: Conversations/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CreateConversationViewModel model)
         {
-            try
-            {
+            try {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid) {
+                    _repo.CreateConversation(model);
+                }
             }
             catch
             {
                 return View();
             }
+            return RedirectToAction("Index", "Familys", new { userID = model.UserName, famName = _repo.GetFamilyNameById(model.FamId) });
         }
 
         // GET: Conversations/Edit/5

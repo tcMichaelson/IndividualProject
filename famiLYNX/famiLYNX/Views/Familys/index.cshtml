@@ -21,16 +21,19 @@
     <ul>
         <li class="NewMessageLink">
             <p>Conversation Starter</p>
-                    @using (@Html.BeginForm("Create", "Message",FormMethod.Post, htmlAttributes: new { @class="NewMessageForm" })) {
+                    @using (@Html.BeginForm("Create", "Conversations",FormMethod.Post, htmlAttributes: new { @class="NewMessageForm" })) {
                         @Html.Label("What are we going to talk about?")
                         @Html.TextBox("NewTopic", "", htmlAttributes: new { placeholder = "This is where the topic goes" })
                         <label>
-                            Check here if this conversation is for an event: @Html.CheckBox("IsEvent", false, htmlAttributes: new { @class = "eventCheckbox" })
-                            <label>Enter the date of this event.</label>
-                            @Html.TextBox("ExpirationDate", "", htmlAttributes: new { placeholder = DateTime.Today.AddDays(14) })
+                            Check here if this conversation is for an event:
+                            @Html.CheckBox("IsEvent", false, htmlAttributes: new { @id="eventCheckbox" })
+                            <label class="viewable">Enter the date of this event.</label>
+                            @Html.TextBox("ExpirationDate", "", htmlAttributes: new { @class = "viewable", @placeholder = DateTime.Today.AddDays(14) })
                         </label>
-                        @Html.Label("Enter the initial message for this event")
-                        @Html.TextBox("FirstMessage", "", htmlAttributes: new { placeholder = "Initial message goes here" })
+                        @Html.Label("Enter the initial message for this conversation.  Leave blank if the topic speaks for itself...or if you have nothing more to say.")
+                        @Html.TextArea("FirstMessage", "", htmlAttributes: new { placeholder = "Initial message goes here" })
+                        @Html.Hidden("UserName", Model.UserName)
+                        @Html.Hidden("FamId", Model.FamilyId)
                         <input type="submit", value="Start this conversation" />
                     }
         </li>

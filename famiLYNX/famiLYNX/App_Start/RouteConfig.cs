@@ -18,6 +18,12 @@ namespace famiLYNX {
                 );
 
             routes.MapRoute(
+                name: "Create Message",
+                url: "Conversations/Create",
+                defaults: new { controller = "Conversations", Action = "Create" }
+                );
+
+            routes.MapRoute(
                 name: "Show New Message",
                 url: "Familys/ShowNewMessage",
                 defaults: new { controller = "Familys", Action = "ShowNewMessage" }
